@@ -3,6 +3,7 @@
   border: 1px solid green;
 }
 .error {
+  font-size: 50px;
   color: red;
   border: 1px solid red;
 }
