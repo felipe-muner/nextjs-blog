@@ -7,6 +7,30 @@ const people = [
 ];
 
 export default function handler(req, res) {
-  // Get data from your database
-  res.status(200).json(people);
+  const {
+    query: { id, name },
+    method,
+  } = req;
+
+  switch (method) {
+    case "GET":
+      // Get data from your database
+      console.log("passei pelo get121331");
+      res.status(200).json(people);
+      break;
+    case "POST":
+      console.log("passei pelo post");
+      people.push({ id: Date.now(), name: "Felipe 5", siblings: true });
+      // Update or create data in your database
+      res.status(200).json(people);
+      break;
+    case "DELETE":
+      console.log("passei pelo delete");
+      // Update or create data in your database
+      res.status(200).json(people);
+      break;
+    default:
+      res.setHeader("Allow", ["GET", "PUT"]);
+      res.status(405).end(`Method ${method} Not Allowed`);
+  }
 }

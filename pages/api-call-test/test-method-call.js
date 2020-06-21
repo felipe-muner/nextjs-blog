@@ -1,5 +1,4 @@
 import useSwr from "swr";
-import Link from "next/link";
 
 const fetcher = (url) =>
   fetch(url, {

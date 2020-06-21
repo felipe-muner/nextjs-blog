@@ -4,7 +4,10 @@ import useSwr from "swr";
 import LayoutCrud, { siteTitle } from "../../components/layoutCrud";
 import Table from "../../components/tableCrud";
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
+const fetcher = (url) =>
+  fetch(url, {
+    method: "GET",
+  }).then((res) => res.json());
 
 export default function Index() {
   const { data, error } = useSwr("/api/people", fetcher);
