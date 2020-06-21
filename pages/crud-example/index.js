@@ -8,7 +8,6 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Index() {
   const { data, error } = useSwr("/api/people", fetcher);
-
   if (error) return <div>Failed to load users</div>;
   if (!data) return <div>Loading...</div>;
 
@@ -17,7 +16,7 @@ export default function Index() {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <Table></Table>
+      <Table data={data}></Table>
       <ul>
         {data.map((people) => (
           <li key={people.id}>
