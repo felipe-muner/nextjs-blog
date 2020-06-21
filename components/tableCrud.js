@@ -33,6 +33,9 @@ const rows = [
 ];
 
 export default function SimpleTable({ data }) {
+  const handleDelete = (dt) => {
+    console.log(dt);
+  };
   console.log(data);
   const classes = useStyles();
 
@@ -58,13 +61,16 @@ export default function SimpleTable({ data }) {
                 <TableCell align="right">{d.name}</TableCell>
                 <TableCell align="right">{d.siblings.toString()}</TableCell>
                 <TableCell align="right">
-                  <Tooltip title="Edit" placement="top-start">
+                  <Tooltip title="Edit" placement="top">
                     <IconButton aria-label="edit">
                       <EditIcon />
                     </IconButton>
                   </Tooltip>
-                  <Tooltip title="Delete" placement="top-start">
-                    <IconButton aria-label="toggleActivity">
+                  <Tooltip title="Delete" placement="top">
+                    <IconButton
+                      aria-label="toggleActivity"
+                      onClick={() => handleDelete(d)}
+                    >
                       <DeleteIcon />
                     </IconButton>
                   </Tooltip>
